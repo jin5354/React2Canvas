@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import babel from 'rollup-plugin-babel'
 import {terser} from 'rollup-plugin-terser'
+import react from 'react'
 
 export default {
   input: './src/index.ts',
@@ -15,6 +16,9 @@ export default {
     resolve(),
     commonjs({
       include: /node_modules/,
+      namedExports: {
+        react: Object.keys(react),
+      },
     }),
     typescript({
       'clean': true,
@@ -25,6 +29,7 @@ export default {
       }
     }),
     babel({ runtimeHelpers: true }),
-    terser(),
-  ]
+    // terser(),
+  ],
+  external: ['react', 'spritejs'],
 }

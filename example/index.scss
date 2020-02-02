@@ -1,0 +1,31 @@
+#test {
+  width: 400px;
+  height: 200px;
+}
+
+.container {
+  width: 400px;
+  height: 200px;
+}
+
+.group {
+  width: 1800px;
+  height: 900px;
+}
+
+.test-group {
+  width: 1800px;
+  height: 900px;
+  --sprite-pos: 1000px, 500px;
+  --sprite-anchor: 0.5;
+}
+
+sprite.robot {
+  width: 365px;
+  height: 505px;
+}
+
+.test-robot {
+  width: 365px;
+  height: 505px;
+}

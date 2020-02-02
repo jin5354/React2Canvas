@@ -2,6 +2,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
   mode: 'development',
@@ -55,6 +56,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
+    alias: {
+      react: path.resolve('./node_modules/react')
+    }
   },
   devtool: 'source-map',
   devServer: {
@@ -72,5 +76,6 @@ module.exports = {
       chunks:['app'],
       inject: true
     }),
+    new BundleAnalyzerPlugin()
   ],
 }
