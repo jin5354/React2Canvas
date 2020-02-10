@@ -29,7 +29,7 @@ export default {
       }
     }),
     babel({ runtimeHelpers: true }),
-    // terser(),
+    terser(),
   ],
-  external: ['react', 'spritejs'],
+  external: ['react', 'r2c-spritejs'],
 }

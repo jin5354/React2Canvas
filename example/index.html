@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <script src="https://cdn.bootcss.com/eruda/1.5.8/eruda.min.js"></script>
+  <script>
+    eruda.init();
+    window.onerror = function(message) {
+      console.log('onerror!!')
+      console.log('messgae:', message);
+    }
+  </script>
 </head>
 <body>
   <div id="root"></div>

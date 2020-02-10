@@ -6,6 +6,7 @@ declare global {
       layer: any;
       group: any;
       sprite: any;
+      txt: any;
     }
   }
 }

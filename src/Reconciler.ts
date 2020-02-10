@@ -1,31 +1,38 @@
+/* eslint-disable max-params */
 /* eslint-disable no-param-reassign */
 import ReactReconciler from 'react-reconciler';
-import { createNode } from 'spritejs';
+import { createNode } from 'r2c-spritejs';
+
+const rootHostContext = {};
+const childHostContext = {};
+const UPDATE_SIGNAL = {};
 
 function applyAttrs(target: any, props: any) {
   const events: any = {};
-  props = {...props};
+  const newProps = {...props};
 
-  Object.keys(props).forEach((key) => {
+  Object.keys(newProps).forEach((key) => {
     if(key.indexOf('on') === 0) {
       const eventName = key.slice(2).toLowerCase();
-      events[eventName] = props[key];
-      delete props[key];
+      events[eventName] = newProps[key];
+      delete newProps[key];
     }
     if(key === 'children') {
-      delete props.children;
+      delete newProps.children;
     }
     if(key === 'className') {
-      props.class = props.className;
-      delete props.className;
+      newProps.class = newProps.className;
+      delete newProps.className;
     }
   });
 
   if(typeof target === 'string') {
-    console.log('createNode: ', target, props);
-    target = createNode(target, props);
+    if(target === 'txt') {
+      target = 'label';
+    }
+    target = createNode(target, newProps);
   } else {
-    target.attr(props);
+    target.attr(newProps);
   }
 
   Object.keys(events).forEach((key) => {
@@ -41,43 +48,67 @@ function applyAttrs(target: any, props: any) {
 export const Reconciler = ReactReconciler({
   supportsMutation: true,
   now: Date.now,
-  getRootHostContext() {},
-  getChildHostContext() {},
-  shouldSetTextContent() {},
-
+  scheduleTimeout: typeof setTimeout === 'function' ? setTimeout : undefined,
+  cancelTimeout: typeof clearTimeout === 'function' ? clearTimeout : undefined,
+  getRootHostContext() {
+    return rootHostContext;
+  },
+  getChildHostContext() {
+    return childHostContext;
+  },
+  getPublicInstance(instance: any) {
+    return instance;
+  },
+  shouldSetTextContent(type: any, props: any) {
+    return typeof props.children === 'string' || typeof props.children === 'number';
+  },
 
   /** create operation */
   createInstance(type: any, props: any) {
+    // console.log('createInstance:', type, props);
     return applyAttrs(type, props);
   },
   createTextInstance() {},
   /** ui tree operation */
   appendInitialChild(parent: any, child: any) {
-    console.log('appendInitialChild:', parent, child)
+    // console.log('appendInitialChild:', parent, child);
     parent.appendChild(child);
   },
-  appendChild() {},
+  appendChild(parent: any, child: any) {
+    // console.log('appendChild:', parent, child);
+    parent.appendChild(child);
+  },
   appendChildToContainer(parent: any, child: any) {
+    // console.log('appendChildToContainer:', parent, child);
     parent.appendChild(child);
   },
-  removeChild() {},
+  removeChild(parent: any, child: any) {
+    // console.log('removeChild:', child, parent);
+    parent.removeChild(child);
+  },
+  removeChildFromContainer(parent: any, child: any) {
+    // console.log('removeChildFromContainer:', child, parent);
+    parent.removeChild(child);
+  },
+  insertBefore(parent: any, child: any, beforeChild: any) {
+    // console.log('insertBefore', parent, child, beforeChild);
+  },
+  insertInContainerBefore() {
+    // console.log('insertInContainerBefore');
+  },
   /** update prop operation */
-  finalizeInitialChildren() {},
-  prepareUpdate() {},
-  commitUpdate() {},
+  finalizeInitialChildren() {
+    return false;
+  },
+  prepareUpdate() {
+    return UPDATE_SIGNAL;
+  },
+  commitUpdate(instance: any, updatePayload: any, type: any, oldProps: any, newProps: any) {
+    applyAttrs(instance, newProps);
+  },
   prepareForCommit() {},
   resetAfterCommit() {},
+  shouldDeprioritizeSubtree() {
+    return false
+  },
 });
-
-// export const Reconciler = {
-//   render(reactElement: any, domElement: any, callback?: Function) {
-
-//     // Create a root Container if it doesnt exist
-//     if (!domElement._rootContainer) {
-//       domElement._rootContainer = ReactReconcilerInst.createContainer(domElement, false);
-//     }
-
-//     // update the root Container
-//     return ReactReconcilerInst.updateContainer(reactElement, domElement._rootContainer, null, callback);
-//   }
-// };

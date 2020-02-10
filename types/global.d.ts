@@ -1,2 +1,2 @@
 declare module 'react-reconciler';
-declare module 'spritejs';
+declare module 'r2c-spritejs';

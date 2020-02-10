@@ -3,7 +3,12 @@
   height: 200px;
 }
 
-.container {
+.sprite-container {
+  width: 400px;
+  height: 200px;
+}
+
+.three-container {
   width: 400px;
   height: 200px;
 }
@@ -14,15 +19,26 @@
 }
 
 .test-group {
-  width: 1800px;
   height: 900px;
   --sprite-pos: 1000px, 500px;
   --sprite-anchor: 0.5;
 }
 
+.test-t {
+  font-size: 100px;
+  --sprite-pos: 600px, 200px;
+}
+
 sprite.robot {
   width: 365px;
   height: 505px;
+  --sprite-anchor: 0.5;
+  --sprite-pos: 400px, 400px;
+}
+
+sprite.robot.on-ani {
+  width: 400px;
+  height: 600px;
 }
 
 .test-robot {
