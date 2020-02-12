@@ -30,7 +30,7 @@
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@rollup/plugin-commonjs": "^11.0.1",
-    "r2c-spritejs": "^0.1.1",
+    "r2c-spritejs": "^0.1.3",
     "react": "^16.12.0",
     "react-reconciler": "^0.24.0",
     "react-three-fiber": "^4.0.14",
