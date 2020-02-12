@@ -3,7 +3,7 @@ import * as spritejs from 'r2c-spritejs';
 import { Reconciler } from './Reconciler';
 
 const sprite = spritejs as any;
-spritejs.Resource.loadTimeout = 180000;
+spritejs.Resource.loadTimeout = 9999999999;
 
 (window as any).React2 = React;
 
