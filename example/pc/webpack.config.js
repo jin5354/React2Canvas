@@ -57,7 +57,8 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      react: path.resolve('./node_modules/react')
+      react: path.resolve('./node_modules/react'),
+      react2canvas: path.resolve('../../dist/index.js'),
     }
   },
   devtool: 'source-map',
