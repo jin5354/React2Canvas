@@ -21,7 +21,7 @@ const HelloWorld = () => {
       <div className="r2c-wrapper">
         <Scene resolution={[2000, 1000]}>
           <layer>
-            <group className="group">
+            <group className="hello-world-group">
               <sprite
                 onMouseEnter={robotMouseEnterHandler}
                 onClick={robotClickHandler}

@@ -1,0 +1,39 @@
+.benchmark-container {
+  padding-left: 20px;
+  padding-top: 20px;
+
+  .controls {
+    p {
+      margin-bottom: 5px;
+
+      button {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .r2c-wrapper {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+
+  #hilo-compare {
+
+    canvas {
+      background: gray;
+    }
+  }
+
+  #sprite-compare {
+    width: 300px;
+    height: 150px;
+  }
+}
+
+.benchmark-group {
+  width: 2000px;
+  height: 1000px;
+  background: gray;
+}

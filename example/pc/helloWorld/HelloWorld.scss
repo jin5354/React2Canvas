@@ -9,24 +9,18 @@
   }
 }
 
-.group {
+.hello-world-group {
   width: 1800px;
   height: 900px;
   background: gray;
-}
 
-.test-group {
-  height: 900px;
-  --sprite-pos: 1000px, 500px;
-  --sprite-anchor: 0.5;
-}
+  .txt {
+    font-size: 100px;
+    --sprite-pos: 600px, 200px;
+  }
 
-.txt {
-  font-size: 100px;
-  --sprite-pos: 600px, 200px;
-}
-
-.robot {
-  width: 365px;
-  height: 505px;
+  .robot {
+    width: 365px;
+    height: 505px;
+  }
 }

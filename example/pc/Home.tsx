@@ -9,6 +9,9 @@ const HelloWorld = () => (
       <li>
         <Link to="/hello-word">Hello World</Link>
       </li>
+      <li>
+        <Link to="/benchmark">BenchMark</Link>
+      </li>
     </ul>
   </div>
 );

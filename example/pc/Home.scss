@@ -9,3 +9,10 @@
     margin: 10px;
   }
 }
+
+body {
+  &>div:last-child {
+    right: 60px!important;
+    left: auto!important;
+  }
+}
